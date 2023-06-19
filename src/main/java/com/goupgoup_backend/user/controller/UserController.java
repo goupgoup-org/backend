@@ -1,6 +1,7 @@
 package com.goupgoup_backend.user.controller;
 
 import com.goupgoup_backend.user.dto.TokenDto;
+import com.goupgoup_backend.user.dto.UserResponse;
 import com.goupgoup_backend.user.service.CustomOAuth2UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -13,14 +14,14 @@ import java.io.IOException;
 @RestController
 @RequiredArgsConstructor
 public class UserController {
-    private final CustomOAuth2UserService customOAuth2UserService;
-
-    @GetMapping("/api/user/oauth")
-    public ResponseEntity<?> kakaoCallback(
-            @RequestParam String code
-    ) throws IOException {
-        TokenDto tokenDto = customOAuth2UserService.kakaoSignIn(code);
-
-        return ResponseEntity.ok(tokenDto);
-    }
+//    private final CustomOAuth2UserService customOAuth2UserService;
+//
+//    @GetMapping("/api/user/oauth")
+//    public ResponseEntity<?> kakaoCallback(
+//            @RequestParam String code
+//    ) throws IOException {
+//        UserResponse response = customOAuth2UserService.kakaoSignIn(code);
+//
+//        return ResponseEntity.ok(response);
+//    }
 }
