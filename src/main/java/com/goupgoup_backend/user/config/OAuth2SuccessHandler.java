@@ -45,18 +45,9 @@ public class OAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHandler 
     }
 
     protected String determineTargetUrl(HttpServletRequest request, HttpServletResponse response, Authentication authentication) {
-        Optional<String> redirectUri = Optional.ofNullable(getCookie(request, "redirect_uri"))
-                .map(String::valueOf);
-
-        if(redirectUri.isPresent() && !isAuthorizedRedirectUri(redirectUri.get())) {
-            throw new IllegalArgumentException("Unauthorized Redirect URI");
-        }
-
-        String targetUrl = redirectUri.orElse(getDefaultTargetUrl());
-
         String token = jwtTokenProvider.createAccessToken(authentication.getName(), authentication.getAuthorities());
 
-        return UriComponentsBuilder.fromUriString("http://localhost:3000/auth/Kakao")
+        return UriComponentsBuilder.fromUriString(redirectUri)
                 .queryParam("token", token)
                 .build().toUriString();
     }
