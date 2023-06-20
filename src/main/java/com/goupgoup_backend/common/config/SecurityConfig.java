@@ -19,6 +19,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class SecurityConfig {
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
+    private final JwtTokenProvider jwtTokenProvider;
 
     private final CustomOAuth2UserService customOAuth2UserService;
     private final OAuth2SuccessHandler oAuth2SuccessHandler;
@@ -40,7 +41,7 @@ public class SecurityConfig {
                .rememberMe().disable();
 
        http.authorizeRequests()
-               .antMatchers("/oauth2/**", "/swagger-ui.html", "/login/**").permitAll()
+               .antMatchers("/oauth2/**", "/swagger-ui.html", "/login/**", "/login", "/**").permitAll()
                .anyRequest().authenticated();
 
        http.oauth2Login()
@@ -54,7 +55,8 @@ public class SecurityConfig {
                .successHandler(oAuth2SuccessHandler)
                .failureHandler(oAuth2FailureHandler);
 
-       http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
+       http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+               .apply(new JwtSecurityConfig(jwtTokenProvider));
 
        return http.build();
     }
