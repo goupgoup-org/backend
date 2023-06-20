@@ -1,5 +1,6 @@
 package com.goupgoup_backend.common.config;
 
+import com.goupgoup_backend.user.config.OAuth2FailureHandler;
 import com.goupgoup_backend.user.config.OAuth2SuccessHandler;
 import com.goupgoup_backend.user.service.CustomOAuth2UserService;
 import lombok.RequiredArgsConstructor;
@@ -21,6 +22,7 @@ public class SecurityConfig {
 
     private final CustomOAuth2UserService customOAuth2UserService;
     private final OAuth2SuccessHandler oAuth2SuccessHandler;
+    private final OAuth2FailureHandler oAuth2FailureHandler;
 
     @Bean
     public PasswordEncoder passwordEncoder() {
@@ -49,7 +51,8 @@ public class SecurityConfig {
                .userInfoEndpoint().userService(customOAuth2UserService)
                .and()
                .defaultSuccessUrl("http://localhost:3000")
-               .successHandler(oAuth2SuccessHandler);
+               .successHandler(oAuth2SuccessHandler)
+               .failureHandler(oAuth2FailureHandler);
 
        http.addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
