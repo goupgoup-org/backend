@@ -23,6 +23,7 @@ public class User extends BaseEntity implements UserDetails, OAuth2User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String oauth2Id;
+    private String password;
     private String email;
     private String name;
     @Enumerated(EnumType.STRING)

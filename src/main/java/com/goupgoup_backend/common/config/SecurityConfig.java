@@ -3,6 +3,7 @@ package com.goupgoup_backend.common.config;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -30,6 +31,12 @@ public class SecurityConfig {
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .and().formLogin()
                 .loginProcessingUrl("/api/admin/login")
+                .successHandler(((request, response, authentication) -> {
+                    response.sendRedirect("/admin/main");
+                }))
+                .failureHandler(((request, response, exception) -> {
+                    response.setStatus(HttpStatus.UNAUTHORIZED.value());
+                }))
                 .permitAll()
                 .and().csrf().disable()
                 .exceptionHandling()
