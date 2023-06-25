@@ -26,6 +26,18 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
+                .authorizeRequests()
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .and().formLogin()
+                .loginProcessingUrl("/api/admin/login")
+                .permitAll()
+                .and().csrf().disable()
+                .exceptionHandling()
+                .authenticationEntryPoint((request, response, authException) -> {
+                    response.sendRedirect("/admin/login");
+                });
+
+        http
                 .httpBasic().disable()
                 .csrf().disable()
                 .headers().frameOptions().sameOrigin()
@@ -36,7 +48,7 @@ public class SecurityConfig {
                 .authorizeRequests()
                 .antMatchers("/ws/**", "/swagger-ui.html")
                 .permitAll()
-//                .anyRequest().authenticated()
+                .anyRequest().authenticated()
                 .and()
                 .apply(new JwtSecurityConfig(jwtTokenProvider));
 
