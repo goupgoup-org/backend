@@ -1,13 +1,16 @@
 package com.goupgoup_backend.user.domain;
 
 import com.goupgoup_backend.common.domain.BaseEntity;
+import com.goupgoup_backend.user.dto.AuthProvider;
 import com.goupgoup_backend.user.dto.SignUpRequest;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Map;
 
 @Getter
 @Setter
@@ -15,24 +18,33 @@ import java.util.Collection;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class User extends BaseEntity implements UserDetails {
+public class User extends BaseEntity implements UserDetails, OAuth2User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String serviceId;
+    private String oauth2Id;
     private String email;
-    private String nickname;
+    private String name;
     @Enumerated(EnumType.STRING)
     private UserRole role;
     @Enumerated(EnumType.STRING)
-    private SignUpType type;
+    private AuthProvider authProvider;
+
+    public User update(String name) {
+        this.name = name;
+        return this;
+    }
 
     public static User from(SignUpRequest parameter) {
         return User.builder()
                 .email(parameter.getEmail())
-                .serviceId(parameter.getServiceId())
-                .nickname(parameter.getNickname())
+                .name(parameter.getNickname())
                 .build();
+    }
+
+    @Override
+    public Map<String, Object> getAttributes() {
+        return null;
     }
 
     @Override
@@ -68,5 +80,10 @@ public class User extends BaseEntity implements UserDetails {
     @Override
     public boolean isEnabled() {
         return false;
+    }
+
+    @Override
+    public String getName() {
+        return null;
     }
 }

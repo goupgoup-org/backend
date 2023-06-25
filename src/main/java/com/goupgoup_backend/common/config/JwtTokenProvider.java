@@ -45,7 +45,7 @@ public class JwtTokenProvider {
         this.REFRESH_TOKEN_EXPIRE_TIME = refreshTime;
     }
 
-    public String generateToken(String email, List<String> roles, long tokenValidTime) {
+    public String generateToken(String email, Collection<? extends GrantedAuthority> roles, long tokenValidTime) {
         Claims claims = Jwts.claims().setSubject(String.valueOf(email));
         claims.put(KEY_ROLES, roles);
 
@@ -60,12 +60,12 @@ public class JwtTokenProvider {
                 .compact();
     }
 
-    public String createAccessToken(String email, List<String> roles) {
+    public String createAccessToken(String email, Collection<? extends GrantedAuthority> roles) {
         return this.generateToken(email, roles, ACCESS_TOKEN_EXPIRE_TIME);
     }
 
 
-    public String createRefreshToken(String email, List<String> roles) {
+    public String createRefreshToken(String email, Collection<? extends GrantedAuthority> roles) {
         return this.generateToken(email, roles, REFRESH_TOKEN_EXPIRE_TIME);
     }
 
