@@ -1,14 +1,11 @@
 package com.goupgoup_backend.user.service;
 
 import com.goupgoup_backend.user.domain.User;
-import com.goupgoup_backend.user.dto.SignUpRequest;
 import com.goupgoup_backend.user.dto.UserResponse;
 import com.goupgoup_backend.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.HashMap;
 
 @Service
 @RequiredArgsConstructor

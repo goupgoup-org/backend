@@ -41,7 +41,7 @@ public class SecurityConfig {
                 .and().csrf().disable()
                 .exceptionHandling()
                 .authenticationEntryPoint((request, response, authException) -> {
-                    response.sendRedirect("/admin/login");
+//                    response.sendRedirect("/auth/login");
                 });
 
         http
