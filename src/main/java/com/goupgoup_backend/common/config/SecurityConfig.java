@@ -28,7 +28,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .antMatchers("/admin/**").hasRole("ADMIN")
+//                .antMatchers("/admin/**").hasRole("ADMIN")
                 .and().formLogin()
                 .loginProcessingUrl("/api/admin/login")
                 .successHandler(((request, response, authentication) -> {
@@ -53,7 +53,7 @@ public class SecurityConfig {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/ws/**", "/swagger-ui.html")
+                .antMatchers("/ws/**", "/swagger-ui.html", "/**")
                 .permitAll()
                 .anyRequest().authenticated()
                 .and()

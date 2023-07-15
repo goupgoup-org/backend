@@ -1,4 +1,4 @@
-package com.goupgoup_backend.admin.apps;
+package com.goupgoup_backend.apps.domain;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
