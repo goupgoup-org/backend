@@ -19,11 +19,10 @@ public class AppServiceImpl implements AppService {
     private final AwsS3Service awsS3Service;
 
     @Override
-    public Long createApp(AppRequest request, List<MultipartFile> multipartFile) {
+    public Long createApp(AppRequest request, MultipartFile multipartFile) {
         String appVersionUid = UidUtil.generateUid();
-        List<String> appLogoUrl = awsS3Service.upload(multipartFile);
-
-        request.setAppLogoUrl(appLogoUrl.get(0));
+        String appLogoUrl = awsS3Service.upload(multipartFile, request.getAppName());
+        request.setAppLogoUrl(appLogoUrl);
 
         App app = appRepository.save(App.from(request, appVersionUid));
 

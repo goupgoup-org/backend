@@ -23,7 +23,7 @@ public class AppController {
     @PostMapping
         public ResponseDto createApp(
                 @RequestPart(value = "request") AppRequest request,
-                @RequestPart(value = "appIcon") List<MultipartFile> multipartFile
+                @RequestPart(value = "appIcon") MultipartFile multipartFile
     ) {
         Long appId = appService.createApp(request, multipartFile);
 

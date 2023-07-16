@@ -10,6 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @RequiredArgsConstructor
 @Service
@@ -20,22 +21,23 @@ public class AwsS3Service {
     private String bucket;
 
 
-    public List<String> upload(List<MultipartFile> multipartFileList) {
-        List<String> imgUrlList = new ArrayList<>();
+    public String upload(MultipartFile multipartFile, String directory) {
+        String imgUrlList;
 
-        for (MultipartFile file : multipartFileList) {
-            String fileName = FileUtil.convert(file);
+        String fileName = FileUtil.convert(multipartFile);
 
-            try {
-                amazonS3Client.putObject(bucket, fileName, file.getInputStream(), null);
-                imgUrlList.add(amazonS3Client.getUrl(bucket, fileName).toString());
-            } catch (Exception e) {
-                throw new RuntimeException("파일 업로드 실패");
-            }
+        if(directory != null) fileName = directory + "/" + fileName;
+
+        try {
+            amazonS3Client.putObject(bucket, fileName, multipartFile.getInputStream(), null);
+            imgUrlList = amazonS3Client.getUrl(bucket, fileName).toString();
+        } catch (Exception e) {
+            throw new RuntimeException("파일 업로드 실패");
         }
 
         return imgUrlList;
     }
+
 
     public void delete(String fileName) {
         amazonS3Client.deleteObject(new DeleteObjectRequest(bucket, fileName));

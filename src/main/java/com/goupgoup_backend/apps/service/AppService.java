@@ -6,5 +6,5 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 public interface AppService {
-    Long createApp(AppRequest request, List<MultipartFile> multipartFile);
+    Long createApp(AppRequest request, MultipartFile multipartFile);
 }
