@@ -1,0 +1,4 @@
+rootProject.name = 'goupgoup_backend'
+
+include 'client'
+include 'admin'
