@@ -1,7 +1,7 @@
-package com.example.client.screen.domain;
+package com.example.admin.screen.domain;
 
-import com.goupgoup_backend.common.domain.BaseEntity;
-import com.goupgoup_backend.screen.dto.ScreenImgRequest;
+import com.example.admin.common.domain.BaseEntity;
+import com.example.admin.screen.dto.ScreenImgRequest;
 import lombok.*;
 
 import javax.persistence.*;

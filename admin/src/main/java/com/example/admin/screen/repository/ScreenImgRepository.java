@@ -1,6 +1,6 @@
-package com.example.client.screen.repository;
+package com.example.admin.screen.repository;
 
-import com.goupgoup_backend.screen.domain.ScreenImg;
+import com.example.admin.screen.domain.ScreenImg;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -15,12 +15,21 @@ import java.util.Optional;
 public class AdminUserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
+
+    /**
+     * 로그인
+     * @param parameter
+     * @return
+     */
     public boolean login(UserRequest parameter) {
-
-
         return true;
     }
 
+    /**
+     * 회원가입
+     * @param parameter
+     * @return
+     */
     public boolean signUp(UserRequest parameter) {
         Optional<User> optionalUser = userRepository.findByEmail(parameter.getEmail());
 
@@ -38,5 +47,9 @@ public class AdminUserService {
         userRepository.save(user);
 
         return true;
+    }
+
+    public String findByUserId() {
+        return null;
     }
 }

@@ -1,4 +1,4 @@
-package com.example.client.screen.dto;
+package com.example.admin.screen.dto;
 
 import lombok.*;
 

@@ -1,9 +1,9 @@
-package com.example.client.apps.controller;
+package com.example.admin.apps.controller;
 
-import com.goupgoup_backend.apps.dto.AppRequest;
-import com.goupgoup_backend.apps.service.AppService;
-import com.goupgoup_backend.common.dto.ResponseDto;
-import com.goupgoup_backend.common.utils.ResponseUtil;
+import com.example.admin.apps.dto.AppRequest;
+import com.example.admin.apps.service.AppService;
+import com.example.admin.common.dto.ResponseDto;
+import com.example.admin.common.utils.ResponseUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

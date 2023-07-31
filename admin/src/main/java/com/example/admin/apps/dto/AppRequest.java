@@ -1,4 +1,4 @@
-package com.example.client.apps.dto;
+package com.example.admin.apps.dto;
 
 import lombok.*;
 

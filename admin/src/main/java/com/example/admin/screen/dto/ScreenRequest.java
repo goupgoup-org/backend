@@ -1,6 +1,6 @@
-package com.example.client.screen.dto;
+package com.example.admin.screen.dto;
 
-import com.goupgoup_backend.common.domain.BaseEntity;
+import com.example.admin.common.domain.BaseEntity;
 import lombok.*;
 
 import java.util.List;

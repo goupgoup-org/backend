@@ -1,7 +1,7 @@
 package com.example.admin.common.utils;
 
-import com.goupgoup_backend.common.dto.ResponseDto;
-import com.goupgoup_backend.common.dto.ResponseStatus;
+import com.example.admin.common.dto.ResponseDto;
+import com.example.admin.common.dto.ResponseStatus;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

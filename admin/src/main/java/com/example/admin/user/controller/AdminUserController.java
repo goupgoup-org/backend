@@ -1,10 +1,11 @@
 package com.example.admin.user.controller;
 
-import com.goupgoup_backend.admin.user.dto.UserRequest;
-import com.goupgoup_backend.admin.user.service.AdminUserService;
-import com.goupgoup_backend.common.dto.ResponseDto;
-import com.goupgoup_backend.common.utils.ResponseUtil;
+import com.example.admin.common.dto.ResponseDto;
+import com.example.admin.common.utils.ResponseUtil;
+import com.example.admin.user.dto.UserRequest;
+import com.example.admin.user.service.AdminUserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/admin/auth")

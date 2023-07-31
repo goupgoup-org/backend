@@ -1,12 +1,12 @@
-package com.example.client.screen.service.impl;
+package com.example.admin.screen.service.impl;
 
-import com.goupgoup_backend.screen.domain.Screen;
-import com.goupgoup_backend.screen.domain.ScreenImg;
-import com.goupgoup_backend.screen.dto.ScreenImgRequest;
-import com.goupgoup_backend.screen.dto.ScreenRequest;
-import com.goupgoup_backend.screen.repository.ScreenImgRepository;
-import com.goupgoup_backend.screen.repository.ScreenRepository;
-import com.goupgoup_backend.screen.service.ScreenService;
+import com.example.admin.screen.domain.Screen;
+import com.example.admin.screen.domain.ScreenImg;
+import com.example.admin.screen.dto.ScreenImgRequest;
+import com.example.admin.screen.dto.ScreenRequest;
+import com.example.admin.screen.repository.ScreenImgRepository;
+import com.example.admin.screen.repository.ScreenRepository;
+import com.example.admin.screen.service.ScreenService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

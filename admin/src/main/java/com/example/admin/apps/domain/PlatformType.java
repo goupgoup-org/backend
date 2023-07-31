@@ -1,4 +1,4 @@
-package com.example.client.apps.domain;
+package com.example.admin.apps.domain;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

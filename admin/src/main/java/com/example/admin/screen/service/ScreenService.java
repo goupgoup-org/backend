@@ -1,6 +1,7 @@
-package com.example.client.screen.service;
+package com.example.admin.screen.service;
 
-import com.goupgoup_backend.screen.dto.ScreenRequest;
+
+import com.example.admin.screen.dto.ScreenRequest;
 
 import java.io.IOException;
 

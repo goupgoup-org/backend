@@ -1,7 +1,7 @@
-package com.example.client.apps.domain;
+package com.example.admin.apps.domain;
 
-import com.goupgoup_backend.apps.dto.AppRequest;
-import com.goupgoup_backend.common.domain.BaseEntity;
+import com.example.admin.apps.dto.AppRequest;
+import com.example.admin.common.domain.BaseEntity;
 import lombok.*;
 
 import javax.persistence.*;

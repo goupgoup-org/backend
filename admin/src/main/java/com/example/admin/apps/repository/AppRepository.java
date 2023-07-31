@@ -1,6 +1,6 @@
-package com.example.client.apps.repository;
+package com.example.admin.apps.repository;
 
-import com.goupgoup_backend.apps.domain.App;
+import com.example.admin.apps.domain.App;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
